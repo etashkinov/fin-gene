@@ -1,7 +1,12 @@
 import quandl_dump as qd
+import fracture
 import graph
 
-df = qd.load_stock("WIKI/GOOGL")
-print(df.tail())
+# GOOGL
+# MSFT
+# TSLA
+df = qd.get("WIKI/CSCO")
+result = fracture.get_point(df[['Adj. Close']])
+print(result)
+graph.show(df, result)
 
-graph.show(df, '2011-05-11')
