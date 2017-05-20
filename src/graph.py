@@ -1,10 +1,8 @@
 import matplotlib.pyplot as plt
-from matplotlib import style
 
 
-def show(df, fracture):
+def show(symbol, df, fracture):
     df['Adj. Close'].plot()
-    style.use('fivethirtyeight')
 
     index = fracture[0]
 
@@ -31,4 +29,5 @@ def show(df, fracture):
     plt.legend(loc=4)
     plt.xlabel('Date')
     plt.ylabel('Price')
+    plt.figtext(.02, .02, symbol)
     plt.show()

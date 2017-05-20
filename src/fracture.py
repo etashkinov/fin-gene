@@ -13,8 +13,11 @@ def get_point(ys):
         before_line = linear_regression.train(xs[i - CHECK_PERIOD:i], ys[i - CHECK_PERIOD:i])
         after_line = linear_regression.train(xs[i:i + CHECK_PERIOD], ys[i:i + CHECK_PERIOD])
 
-        fracture = after_line[0]# - before_line[0]
+        fracture = after_line[0]**2/before_line[0]**2
         if fracture > result[1]:
             result = i, fracture, before_line, after_line
 
-    return result
+    if result[0]:
+        return result
+    else:
+        return None
